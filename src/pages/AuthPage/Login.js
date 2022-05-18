@@ -40,7 +40,7 @@ const Login = () => {
     // const checkChat = api.get('staffs/checkStaff', { params: { userId: user.id } })
     //   .then((response) => {
     //     if (response.data === true) {
-          navigate('/app', { replace: true });
+          navigate('/app/account', { replace: true });
     //     } else {
     //       navigate('/onboard/onboarding', {
     //         replace: true

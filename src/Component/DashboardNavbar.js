@@ -47,8 +47,8 @@ const DashboardNavbar = ({ onMobileNavOpen, ...rest }) => {
     // Navigates to the homepage which Calls the signOut method on mount
     // and clears the logged in user from local storage.
     navigate('/home', { replace: true });
-    localStorage.clear();
   };
+
 
   return (
     <AppBar
@@ -114,7 +114,7 @@ const DashboardNavbar = ({ onMobileNavOpen, ...rest }) => {
                 My Profile
               </RouterLink>
             </MenuItem>
-            {/* <MenuItem onClick={handleClose}>Account</MenuItem> */}
+            <MenuItem onClick={handleClose}>Account</MenuItem>
           </Menu>
 
           <Typography>
@@ -124,7 +124,7 @@ const DashboardNavbar = ({ onMobileNavOpen, ...rest }) => {
           </Typography>
         </Hidden>
         <Hidden lgUp>
-          <IconButton
+            <IconButton 
             color="inherit"
             onClick={onMobileNavOpen}
           >
@@ -139,5 +139,6 @@ const DashboardNavbar = ({ onMobileNavOpen, ...rest }) => {
 DashboardNavbar.propTypes = {
   onMobileNavOpen: PropTypes.func
 };
+
 
 export default DashboardNavbar;

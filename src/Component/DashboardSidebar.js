@@ -11,66 +11,66 @@ import {
   List,
   Typography
 } from '@material-ui/core';
-// import {
-//   Calendar as CalendarIcon,
-//   BarChart as BarChartIcon,
-//   Briefcase as BriefcaseIcon,
-//   Settings as SettingsIcon,
-//   Trello as TrelloIcon,
-//   User as UserIcon,
-//   UserCheck as UserCheckIcon,
-//   Users as UsersIcon,
-//   UserPlus as UserPlusIcon,
-//   LogOut as LogoutIcon
-// } from 'react-feather';
+import {
+  Calendar as CalendarIcon,
+  BarChart as BarChartIcon,
+  Briefcase as BriefcaseIcon,
+  Settings as SettingsIcon,
+  Trello as TrelloIcon,
+  User as UserIcon,
+  UserCheck as UserCheckIcon,
+  Users as UsersIcon,
+  UserPlus as UserPlusIcon,
+  LogOut as LogoutIcon
+} from 'react-feather';
 import getInitials from '../REST-API/utils/getInitials';
 import { getCurrentUser } from '../REST-API/auth/AuthProvider';
 import NavItem from './NavItem';
 
 const items = [
   {
-    href: '/app/dashboard',
-    // icon: BarChartIcon,
-    title: 'Dashboard'
-  },
-  {
     href: '/app/account',
-    // icon: UserIcon,
+    icon: UserIcon,
     title: 'Account'
   },
   {
-    href: '/app/services',
-    // icon: BriefcaseIcon,
-    title: 'Balance'
+    href: '/app/staff',
+    icon: UserIcon,
+    title: 'Staffs'
+  },
+  {
+    href: '/app/politics',
+    icon: BriefcaseIcon,
+    title: 'Politics'
   },
   {
     href: '/app/customers',
-    // icon: UserPlusIcon,
+    icon: UserPlusIcon,
     title: 'Calender'
   },
   {
     href: '/app/appointments',
-    // icon: TrelloIcon,
+    icon: TrelloIcon,
     title: 'Deductions'
   },
   {
     href: '/app/calendar',
-    // icon: CalendarIcon,
+    icon: CalendarIcon,
     title: 'stock'
   },
   {
     href: '/app/users',
-    // icon: UsersIcon,
+    icon: UsersIcon,
     title: 'News'
   },
   {
     href: '/app/settings',
-    // icon: SettingsIcon,
+    icon: SettingsIcon,
     title: 'Settings'
   },
   {
-    href: '/home',
-    // icon: LogoutIcon,
+    href: '',
+    icon: LogoutIcon,
     title: 'Logout'
   },
 ];
@@ -84,7 +84,7 @@ const DashboardSidebar = ({ onMobileClose, openMobile }) => {
     if (openMobile && onMobileClose) {
       onMobileClose();
     }
-  }, [location.pathname]);
+  }, [location.pathname, onMobileClose, openMobile]);
 
   useEffect(() => {
     // Assign current user to a variable user.

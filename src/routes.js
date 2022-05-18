@@ -8,13 +8,21 @@ import Login from './pages/AuthPage/Login';
 import DashboardLayout from './Component/DashboardLayout';
 import MainLayout from './Component/MainLayout';
 import HomePage from './pages/LandingPage/HomePage';
+import Politics from './Component/Politics';
+import Sports from './Component/Sports';
+import Account from './pages/Account';
+import Staffs from './pages/Staffs';
 
 const routes = [ 
     {
         path: 'app',
         element: <DashboardLayout />,
         children: [
-          { path: 'account', element: <MainLayout /> },
+          { path: 'account', element: <Account /> },
+          { path: 'staff', element: <Staffs /> },
+          { path: 'sports', element: <Sports /> },
+          { path: 'politics', element: <Politics /> },
+
           {path: '*', element: <Navigate to="/404" /> }
         ] 
     },    {
