@@ -12,15 +12,15 @@ import {
   Typography
 } from '@material-ui/core';
 import {
-  Calendar as CalendarIcon,
-  BarChart as BarChartIcon,
-  Briefcase as BriefcaseIcon,
+  // Calendar as CalendarIcon,
+  // BarChart as BarChartIcon,
+  // Briefcase as BriefcaseIcon,
   Settings as SettingsIcon,
-  Trello as TrelloIcon,
+  // Trello as TrelloIcon,
   User as UserIcon,
-  UserCheck as UserCheckIcon,
-  Users as UsersIcon,
-  UserPlus as UserPlusIcon,
+  // UserCheck as UserCheckIcon,
+  // Users as UsersIcon,
+  // UserPlus as UserPlusIcon,
   LogOut as LogoutIcon
 } from 'react-feather';
 import getInitials from '../REST-API/utils/getInitials';
@@ -31,37 +31,12 @@ const items = [
   {
     href: '/app/account',
     icon: UserIcon,
-    title: 'Account'
+    title: 'Dashboard'
   },
   {
-    href: '/app/staff',
+    href: '/app/properties',
     icon: UserIcon,
-    title: 'Staffs'
-  },
-  {
-    href: '/app/politics',
-    icon: BriefcaseIcon,
-    title: 'Politics'
-  },
-  {
-    href: '/app/customers',
-    icon: UserPlusIcon,
-    title: 'Calender'
-  },
-  {
-    href: '/app/appointments',
-    icon: TrelloIcon,
-    title: 'Deductions'
-  },
-  {
-    href: '/app/calendar',
-    icon: CalendarIcon,
-    title: 'stock'
-  },
-  {
-    href: '/app/users',
-    icon: UsersIcon,
-    title: 'News'
+    title: 'Properties'
   },
   {
     href: '/app/settings',

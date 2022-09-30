@@ -3,7 +3,7 @@ import React from 'react';
 const Logo = (props) => (
   <img
     alt="Logo"
-    src="/static/logo.svg"
+    src="C:\Users\Lenovo\Desktop\reac\my-react-app\src\assets\logo.svg"
     {...props}
   />
 );

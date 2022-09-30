@@ -15,20 +15,21 @@ function CustomerList() {
   // const location = useLocation();
 
   const [staffs, setStaffs] = useState(['']);
-  // console.log('this is everything');
-  // console.log(userId);
-  // console.log(location);
   useEffect(() => {
     (async () => {
-      const result = await api.get('staffs', {
+      // const currentUserId = JSON.parse(localStorage.getItem('user')).id;
+      const result = await api.get('property', {
         params: {
-          userId: '1'
+          userId: 1
         }
       });
       setStaffs(result.data);
-      console.log('this is the user');
+     console.log("this should be the number os properties");
       console.log(staffs);
+      // console.log("or is this should be the number os properties")
+      // console(result.data);
     })();
+
   }, []);
 
   return (

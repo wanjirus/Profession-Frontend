@@ -5,6 +5,7 @@ import PerfectScrollbar from 'react-perfect-scrollbar';
 import {
   Avatar,
   Box,
+  Button,
   Card,
   Checkbox,
   Table,
@@ -15,45 +16,43 @@ import {
   TableRow,
   Typography
 } from '@material-ui/core';
-// import getInitials from 'src/utils/getInitials';
 import getInitials from '../../utils/getInitials';
 
-const StaffListResults = ({ staffs, ...rest }) => {
-  const [selectedStaffIds, setSelectedStaffIds] = useState([]);
+const PropertyListReasults = ({ properties, ...rest }) => {
+  const [selectedCustomerIds, setSelectedCustomerIds] = useState([]);
   const [limit, setLimit] = useState(10);
   const [page, setPage] = useState(0);
 
   const handleSelectAll = (event) => {
-    let newSelectedStaffIds;
+    let newSelectedCustomerIds;
 
     if (event.target.checked) {
-      newSelectedStaffIds = staffs.map((staff) => staff.id);
+      newSelectedCustomerIds = properties.map((customer) => customer.id);
     } else {
-      newSelectedStaffIds = [];
+      newSelectedCustomerIds = [];
     }
 
-    setSelectedStaffIds(newSelectedStaffIds);
+    setSelectedCustomerIds(newSelectedCustomerIds);
   };
 
   const handleSelectOne = (event, id) => {
-    console.log(staffs);
-    const selectedIndex = selectedStaffIds.indexOf(id);
-    let newSelectedStaffIds = [];
+    const selectedIndex = selectedCustomerIds.indexOf(id);
+    let newSelectedCustomerIds = [];
 
     if (selectedIndex === -1) {
-      newSelectedStaffIds = newSelectedStaffIds.concat(selectedStaffIds, id);
+      newSelectedCustomerIds = newSelectedCustomerIds.concat(selectedCustomerIds, id);
     } else if (selectedIndex === 0) {
-      newSelectedStaffIds = newSelectedStaffIds.concat(newSelectedStaffIds.slice(1));
-    } else if (selectedIndex === selectedStaffIds.length - 1) {
-      newSelectedStaffIds = newSelectedStaffIds.concat(newSelectedStaffIds.slice(0, -1));
+      newSelectedCustomerIds = newSelectedCustomerIds.concat(selectedCustomerIds.slice(1));
+    } else if (selectedIndex === selectedCustomerIds.length - 1) {
+      newSelectedCustomerIds = newSelectedCustomerIds.concat(selectedCustomerIds.slice(0, -1));
     } else if (selectedIndex > 0) {
-      newSelectedStaffIds = newSelectedStaffIds.concat(
-        newSelectedStaffIds.slice(0, selectedIndex),
-        newSelectedStaffIds.slice(selectedIndex + 1)
+      newSelectedCustomerIds = newSelectedCustomerIds.concat(
+        selectedCustomerIds.slice(0, selectedIndex),
+        selectedCustomerIds.slice(selectedIndex + 1)
       );
     }
 
-    setSelectedStaffIds(newSelectedStaffIds);
+    setSelectedCustomerIds(newSelectedCustomerIds);
   };
 
   const handleLimitChange = (event) => {
@@ -73,65 +72,49 @@ const StaffListResults = ({ staffs, ...rest }) => {
               <TableRow>
                 <TableCell padding="checkbox">
                   <Checkbox
-                    checked={selectedStaffIds.length === staffs.length}
+                    checked={selectedCustomerIds.length === properties.length}
                     color="primary"
                     indeterminate={
-                      selectedStaffIds.length > 0
-                      && selectedStaffIds.length < staffs.length
+                      selectedCustomerIds.length > 0
+                      && selectedCustomerIds.length < properties.length
                     }
                     onChange={handleSelectAll}
                   />
                 </TableCell>
-
-
                 <TableCell>
-                  avatar
+                  Name
                 </TableCell>
-
                 <TableCell>
-                  name
+                  Email
                 </TableCell>
-
                 <TableCell>
-                  location
+                  Location
                 </TableCell>
-                
                 <TableCell>
-                  contact
+                  Phone Number
                 </TableCell>
-
                 <TableCell>
-                  price
+                  Registration date
                 </TableCell>
-                
                 <TableCell>
-                  action
+                  Action
                 </TableCell>
-
-
-
-
               </TableRow>
-
             </TableHead>
-
             <TableBody>
-              {staffs.slice(0, limit).map((staff) => (
+              {properties.slice(0, limit).map((customer) => (
                 <TableRow
                   hover
-                  key={staff.id}
-                  selected={selectedStaffIds.indexOf(staff.id) !== -1}
+                  key={customer.id}
+                  selected={selectedCustomerIds.indexOf(customer.id) !== -1}
                 >
-
                   <TableCell padding="checkbox">
                     <Checkbox
-                      checked={selectedStaffIds.indexOf(staff.id) !== -1}
-                      onChange={(event) => handleSelectOne(event, staff.id)}
+                      checked={selectedCustomerIds.indexOf(customer.id) !== -1}
+                      onChange={(event) => handleSelectOne(event, customer.id)}
                       value="true"
                     />
                   </TableCell>
-
-
                   <TableCell>
                     <Box
                       sx={{
@@ -140,36 +123,58 @@ const StaffListResults = ({ staffs, ...rest }) => {
                       }}
                     >
                       <Avatar
-                        src={staff.avatarUrl}
+                        src={customer.avatarUrl}
                         sx={{ mr: 2 }}
                       >
-                        {getInitials(staff.name)}
+                        {getInitials(customer.name)}
                       </Avatar>
                       <Typography
                         color="textPrimary"
                         variant="body1"
                       >
+                        {customer.name}
                       </Typography>
                     </Box>
                   </TableCell>
                   <TableCell>
-                    {staff.location}
+                    {customer.description}
                   </TableCell>
-
                   <TableCell>
                     {/* {`${customer.address.city}, ${customer.address.state}, ${customer.address.country}`} */}
-                    {staff.contact}
-                  </TableCell>
-
-                  <TableCell>
-                    {staff.price}
+                    {customer.location}
                   </TableCell>
                   <TableCell>
-                    {staff.location}
+                    {customer.contactInfo}
                   </TableCell>
-            
+                  <TableCell>
+                    {/* {moment(customer.createdAt).format('MMM Do YYYY')} */}
+                    {customer.price}
+                  </TableCell>
 
 
+                  <TableCell
+                  
+                  sx={{
+                    display: 'flex',
+                    justifyContent: 'flex-end',
+                    nargin: '10px'
+                  }}
+                  
+                  >
+                 <Button
+                 color="primary"
+                 variant="contained"
+                 >
+                      Delete
+                </Button>
+                <Button
+                 color="primary"
+                 variant="contained"
+                 
+                 >
+                    Update
+                </Button>
+                  </TableCell>
                 </TableRow>
               ))}
             </TableBody>
@@ -178,19 +183,19 @@ const StaffListResults = ({ staffs, ...rest }) => {
       </PerfectScrollbar>
       <TablePagination
         component="div"
-        count={staffs.length}
+        count={properties.length}
         onPageChange={handlePageChange}
         onRowsPerPageChange={handleLimitChange}
         page={page}
         rowsPerPage={limit}
-        rowsPerPageOptions={[5, 10, 25]}
+        rowsPerPageOptions={[5, 10, 15, 25, 50]}
       />
     </Card>
   );
 };
 
-StaffListResults.propTypes = {
-  staffs: PropTypes.array.isRequired
+PropertyListReasults.propTypes = {
+  properties: PropTypes.array.isRequired
 };
 
-export default StaffListResults;
+export default PropertyListReasults;

@@ -20,7 +20,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import Logo from './Logo';
 
-const DashboardNavbar = ({ onMobileNavOpen, ...rest }) => {
+const DashboardNavbar = ({  onMobileNavOpen, ...rest }) => {
   const navigate = useNavigate();
   const [notifications] = useState([]);
   const [username, setUsername] = useState(undefined);

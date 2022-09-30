@@ -7,7 +7,7 @@ const theme = createTheme({
     
     background: {
       default: '#F4F6F8',
-      paper: colors.common.white
+      paper: colors.blueGrey[100]
     },
     primary: {
       

@@ -11,7 +11,8 @@ import HomePage from './pages/LandingPage/HomePage';
 import Politics from './Component/Politics';
 import Sports from './Component/Sports';
 import Account from './pages/Account';
-import Staffs from './pages/Staffs';
+import PropertiesList from './pages/PropertiesList';
+import { PropertyFeed } from './pages';
 
 const routes = [ 
     {
@@ -19,7 +20,7 @@ const routes = [
         element: <DashboardLayout />,
         children: [
           { path: 'account', element: <Account /> },
-          { path: 'staff', element: <Staffs /> },
+          { path: 'properties', element: <PropertiesList /> },
           { path: 'sports', element: <Sports /> },
           { path: 'politics', element: <Politics /> },
 
@@ -31,6 +32,7 @@ const routes = [
     children: [
       { path: 'home', element: <HomePage /> },
       { path: 'login', element: <Login /> },
+      { path: 'properties', element: <PropertyFeed /> },
       { path: 'register', element: <Register /> },
       { path: '/404', element: <NotFound /> },
       { path: '/', element: <Navigate to="/home" /> },
